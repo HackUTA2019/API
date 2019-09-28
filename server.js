@@ -9,6 +9,8 @@ var mongoose = require('mongoose');
 
 const port = 42;
 
+console.log("Node server");
+
 var indexRouter = require('./routes/routes');
 
 var app = express();

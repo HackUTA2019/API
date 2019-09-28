@@ -7,7 +7,7 @@ var logger = require('morgan');
 var db_url = process.env.DB || require("./config/db");
 var mongoose = require('mongoose');
 
-const port = 42;
+const port = process.env.PORT || 42;
 
 console.log("Node server");
 

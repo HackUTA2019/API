@@ -19,15 +19,19 @@ const SimulationSchema = new mongoose.Schema({
     }
   });
   
+
+const Simulation = mongoose.model("Simulation", SimulationSchema);
+
 /**
  * Generate a new simulation
  */
-router.post("/new_simulation", async (request, response) => {
+router.post("/", async (request, response) => {
     try {
-        var new_routine = new SimulationSchema(request.body);
+        var new_routine = new Simulation(request.body);
         var result = await new_routine.save();
         response.send(result);
     } catch (error) {
+        console.log(error);
         response.status(500).send(error);
     }
 });
@@ -35,11 +39,12 @@ router.post("/new_simulation", async (request, response) => {
 /**
  * Return simulations
  */
-router.get("/get_simulations", async (request, response) => {
+router.get("/", async (request, response) => {
     try {
-        var result = await routine.find().exec();
+        var result = await Simulation.find().exec();
         response.send(result);
     } catch (error) {
+        console.log(error);
         response.status(500).send(error);
     }
 });

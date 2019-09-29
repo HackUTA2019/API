@@ -28,6 +28,8 @@ app.use(logger('dev'));
 app.use(express.static('static'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+express.static.mime.define({'application/wasm': ['wasm']})
+
 app.use(cookieParser());
 
 app.use('/api/simulations/', indexRouter);

@@ -7,7 +7,8 @@ var logger = require('morgan');
 var db_url = process.env.DB || require("./config/db");
 var mongoose = require('mongoose');
 
-const port = process.env.PORT || 42;
+
+const port = process.env.PORT || 8080;
 
 console.log("Node server");
 
@@ -24,6 +25,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
+app.use(express.static('static'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
